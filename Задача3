@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        for (int i = 35; i <= 87; i++)
+        {
+            int остаток = i % 7;
+            if (остаток == 1 || остаток == 2 || остаток == 5)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+    
