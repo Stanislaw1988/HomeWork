@@ -1,0 +1,21 @@
+namespace Задача2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Напишите число n: ");
+            int n = int.Parse(Console.ReadLine());
+
+            int сумма = 0;
+
+
+            for (int i = 1; i <= n; i++)
+            {
+                сумма += i;
+            }
+
+            Console.WriteLine($"Сумма чисел от 1 до {n} равна {сумма}");
+        }
+    }
+}
