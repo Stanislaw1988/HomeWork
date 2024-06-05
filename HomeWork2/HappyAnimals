@@ -1,0 +1,157 @@
+using System;
+
+
+public abstract class Animal
+
+{
+
+    public string Name { get; private set; }
+
+    public int Age { get; private set; }
+
+    private int health;
+
+    protected Animal(int age)
+
+    {
+
+        Age = age;
+
+    }
+
+    public void SetName(string name)
+
+    {
+
+        if (string.IsNullOrEmpty(Name))
+
+        {
+
+            Name = name;
+
+        }
+
+        else
+
+        {
+
+            throw new InvalidOperationException("Имя уже есть и его нельзя поменять");
+
+        }
+
+    }
+
+    public void Feed(int foodCount)
+
+    {
+
+        if (foodCount < 0)
+
+        {
+
+            throw new ArgumentException("Неправильно задано количество корма. Не может принимать отрицательные значения");
+
+        }
+
+        health += foodCount;
+
+    }
+
+    public void Punish(int punchCount)
+
+    {
+
+        if (punchCount < 0)
+
+        {
+
+            throw new ArgumentException("Некорректно выбрано наказание");
+
+        }
+
+        health -= punchCount;
+
+    }
+
+    public string HealthStatus
+
+    {
+
+        get
+
+        {
+
+            if (health >= 0 && health)
+
+            {
+
+                return "Белый";
+
+            }
+
+            else if (health >= 51 && health)
+
+            {
+
+                return "Зеленый";
+
+            }
+
+            else
+
+            {
+
+                throw new InvalidOperationException("Уровень здоровья не в рамках заданных параметров");
+
+            }
+
+        }
+
+    }
+
+    public virtual void Say()
+
+    {
+
+        Console.WriteLine($"Name: {Name}, Age: {Age}");
+
+    }
+
+}
+
+public class Cat : Animal
+
+{
+
+    public Cat(int age) : base(age) { }
+
+    public override void Say()
+
+    {
+
+        base.Say();
+
+        Console.WriteLine("Мяу");
+
+    }
+
+}
+
+public class Dog : Animal
+
+{
+
+    public Dog(int age) : base(age) { }
+
+    public override void Say()
+
+    {
+
+        base.Say();
+
+        Console.WriteLine("Гав");
+
+    }
+
+}
+
